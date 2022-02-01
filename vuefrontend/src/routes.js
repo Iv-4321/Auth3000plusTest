@@ -39,6 +39,9 @@ export default new VueRouter({
         path: '/upload',
         name: 'upload',
         component: Upload,
+        meta: {
+            requiresLogin: true
+          }
         },
     ]
 })

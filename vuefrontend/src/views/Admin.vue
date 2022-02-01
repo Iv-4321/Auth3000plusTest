@@ -15,8 +15,9 @@
                       <a href="" class="btn btn-sm btn-outline-primary" @click.prevent="getpdf(book.pdf)" role="button" aria-pressed="true">Читать книгу</a>
                       </div>
                       <div class="btn-group">
-                      <a href="" class="btn btn-sm btn-outline-primary" @click.prevent="getpdf(book.pdf)" role="button" aria-pressed="true">Читать книгу</a>
+                      <a href="" class="btn btn-sm btn-outline-primary" role="button" aria-pressed="true">Удалить</a>
                       </div>
+
                       <small class="text-muted">9 mins</small>
                     </div>
                   </div>
