@@ -15,7 +15,7 @@
                       <a href="" class="btn btn-sm btn-outline-primary" @click.prevent="getpdf(book.pdf)" role="button" aria-pressed="true">Читать книгу</a>
                       </div>
                       <div class="btn-group">
-                      <a href="" class="btn btn-sm btn-outline-primary" role="button" aria-pressed="true">Удалить</a>
+                      <a href="" class="btn btn-danger" role="button" aria-pressed="true">Удалить</a>
                       </div>
 
                       <small class="text-muted">9 mins</small>
@@ -30,7 +30,6 @@
 </template>
 
 <script>
-
   import { getAPI } from '../axios-api'
   import { mapState } from 'vuex'
   export default {
@@ -42,7 +41,6 @@
         })
     },
     components: {
-
     },
     computed: mapState(['APIData']),
     created () {
@@ -63,10 +61,4 @@
 </script>
 
 <style>
-
 </style>
-
-
-
-
-
