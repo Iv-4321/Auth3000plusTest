@@ -21,7 +21,8 @@ INSTALLED_APPS = [
     'apiapp',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
-    'core'
+    'core',
+    'haystack',
 ]
 
 MIDDLEWARE = [
@@ -43,6 +44,13 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'contenttype',
 ]
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'ADMIN_URL': 'http://127.0.0.1:8983/solr/admin/cores'
+    },
+}
 
 ROOT_URLCONF = 'mainapp.urls'
 

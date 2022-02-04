@@ -37,6 +37,8 @@ export default new Vuex.Store({
           password: usercredentials.password
         })
           .then(response => {
+            console.log('Это ТОКЕНЫ !', response.data.access, response.data.refresh );
+            alert('Это ТОКЕНЫ!');
             context.commit('updateStorage', { access: response.data.access, refresh: response.data.refresh }) 
             resolve()
           })

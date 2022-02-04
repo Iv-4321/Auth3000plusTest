@@ -15,9 +15,8 @@
                       <a href="" class="btn btn-sm btn-outline-primary" @click.prevent="getpdf(book.pdf)" role="button" aria-pressed="true">Читать книгу</a>
                       </div>
                       <div class="btn-group">
-                      <a href="" class="btn btn-danger" role="button" aria-pressed="true">Удалить</a>
+                        <a href="" class="btn btn-danger" @click="deleteData(results, index)" role="button" aria-pressed="true">Удалить</a>
                       </div>
-
                       <small class="text-muted">9 mins</small>
                     </div>
                   </div>
@@ -47,6 +46,7 @@
         getAPI.get('http://127.0.0.1:8000/api/books/')
           .then(response => {
             this.$store.state.APIData = response.data
+            console.log(response);
           })
           .catch(err => {
             console.log(err)
@@ -55,7 +55,15 @@
     methods: {
         getpdf(file) {
             window.open("" + file, "");
-        }
+        },
+         deleteData: function(result, id) {
+            getAPI.delete('https://my-json-server.typicode.com/json/posts/' + result.id)
+            .then(() => {
+              this.result.splice(id, 1)
+                console.log(this.result);
+      });
+    },
+
     }
   }
 </script>
