@@ -1,27 +1,57 @@
 <template>
-   <div class="search-field">
-                <input class="text"
-                 type="search-field"
-                 v-model="searchValue"
-                >
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" @click="search(searchValue)">Search</button>
-   </div>
+<div class="nav-scroller py-1 mb-2">
+    <div class="nav d-flex justify-content-between">
+        <input v-model="keyword" class="form-control" type="text" placeholder="Search" aria-label="Search">
+        <div v-bind:key="result.id" v-for="result in results">
+        <p>Results are: {{ result.name }}</p>
+                 <div class="card mb-4 box-shadow">
+                            <img :src="result.picture" fluid />
+                  <div class="card-body">
+                      <h4 class=""><a class="text-secondary" href="">{{result.name}}</a></h4>
+                      <p class="card-text">{{result.author}}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                      <a href="" class="btn btn-sm btn-outline-primary" @click.prevent="getpdf(result.pdf)" role="button" aria-pressed="true">Читать книгу</a>
+                      </div>
+                      <small class="text-muted">9 mins</small>
+                    </div>
+                  </div>
+              </div>
+            </div>
+    </div>
+</div>
 </template>
 
+
 <script>
-    export default {
-        name: "Search",
-        props: {},
-        data() {
-            return {
-             searchValue: ''
-            }
-        },
-        methods: {
-         search() {
+import axios from 'axios';
 
-         }
-        }
+export default {
+  name: 'Home',
+  components: {
+  },
+  data() {
+      return {
+          keyword: '',
+          results: [],
+      }
+  },
+  watch: {
+    keyword: function(newVal) {
+      if (newVal.length >2) {
+        this.getResults();
+      }
     }
-
+  },
+  methods: {
+      getResults() {
+          axios.get("http://127.0.0.1:8000/api/books/?search="+this.keyword)
+          .then(res => (this.results = res.data))
+          .catch(err => console.log(err));
+      }
+      },
+      created() {
+      this.getResults()
+      }
+}
 </script>

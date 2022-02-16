@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .serializers import BookSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Book
+from .pdf_to_png_txt import parserPdf
 # from .service import BookFilter
 # import json
 # import requests
@@ -21,6 +22,7 @@ class BookViewSet(viewsets.ModelViewSet):
     search_fields = ['name', 'author']
 
     def perform_create(self, serializer):
+        parserPdf()
         serializer.save()
 
 
