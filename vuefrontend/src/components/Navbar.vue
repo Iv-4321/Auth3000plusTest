@@ -12,15 +12,14 @@
           <ul class="navbar-nav mr-auto">
             <form class="form-inline my-2 my-lg-0">
                 <button class="form-control mr-sm-2" v-if="accessToken!=null" type="submit"><router-link :to = "{ name:'logout' }">Logout</router-link></button>
-                <button class="form-control mr-sm-2" v-if="accessToken!=null" type="submit"><router-link :to = "{ name:'posts' }">Home</router-link></button>
-                <button class="form-control mr-sm-2" v-if="accessToken!=null" type="submit"><router-link :to = "{ name:'upload' }">Upload </router-link></button>
+                <button class="btn btn-outline-success my-2 mr-sm-2" v-if="accessToken!=null" type="submit"><router-link :to = "{ name:'Admin' }">Admin page</router-link></button>
+                <button class="btn btn-outline-success my-2 mr-sm-2" v-if="accessToken!=null" type="submit"><router-link :to = "{ name:'upload' }">Upload </router-link></button>
                 <button class="btn btn-outline-success my-2 my-sm-0"  v-if="accessToken==null" type="submit"><router-link :to = "{ name:'logout' }">Sing in</router-link></button>
             </form>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-
           </ul>
         </div>
 
@@ -33,7 +32,7 @@
   import { mapState } from 'vuex'
   export default {
     name: 'Navbar',
-    computed: mapState(['accessToken'])
+    computed: mapState(['accessToken']),
   }
 </script>
 

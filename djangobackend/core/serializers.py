@@ -4,6 +4,8 @@ from .models import Book
 
 class BookSerializer(serializers.ModelSerializer):
 
+    # def post(self, ):
+
 
     class Meta:
         model = Book

@@ -40,6 +40,7 @@ import axios from 'axios'
         name: '',
         author: '',
         picture: '',
+        search_term: '',
       }
     },
     methods: {
@@ -56,14 +57,18 @@ import axios from 'axios'
 
             .then((response) => {
                         console.log(response);
+                        console.log(formData);
 
                     })
                     .catch((error) => {
                         console.log(error);
                     });
-      }
+
+      },
+
+        }
     }
-  }
+
 </script>
 
 <style lang="scss">

@@ -1,19 +1,33 @@
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, filters
+from rest_framework.filters import SearchFilter
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
 from .serializers import BookSerializer
-    # , BookDetailSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Book
-import json
-import requests
-import fitz
-from django.http import JsonResponse
+# from .service import BookFilter
+# import json
+# import requests
+# import fitz
+# from django.http import JsonResponse
 
 
 class BookViewSet(viewsets.ModelViewSet):
-    serializer_class = BookSerializer
     queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    filter_backends = [SearchFilter]
+    # permission_classes = [IsAuthenticatedOrReadOnly]
+    # filterset_fields = ['prise']
+    search_fields = ['name', 'author']
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+
 
     def post(self, ):
         pass
+
 
 
 # class BookCreateView(generics.CreateAPIView):

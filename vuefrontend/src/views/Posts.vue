@@ -3,6 +3,10 @@
 
       <div class="album py-5 bg-light">
           <div class="container">
+          <div class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" v-model="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" v-on:click.prevent="searchHandler()">Search</button>
+          </div>
             <div class="row">
               <div v-for="book in APIData" :key="book.id" :to="book.pdf" class="col-md-4">
                 <div class="card mb-4 box-shadow">
@@ -31,16 +35,26 @@
   import { mapState } from 'vuex'
   export default {
     name: 'Book',
+    data() {
+        return {
+        search: '',
+        data: []
+        };
+    },
+
     onIdle () {
       this.$store.dispatch('userLogout')
         .then(() => {
           this.$router.push({ name: 'login' })
         })
     },
+
     components: {
 
     },
     computed: mapState(['APIData']),
+
+
     created () {
         getAPI.get('http://127.0.0.1:8000/api/books/')
           .then(response => {
@@ -54,8 +68,10 @@
         getpdf(file) {
             window.open("" + file, "");
         }
+
+    },
     }
-  }
+
 </script>
 
 <style>

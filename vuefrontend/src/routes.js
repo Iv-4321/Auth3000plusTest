@@ -5,6 +5,7 @@ import Login from './views/Login'
 import Logout from './views/Logout'
 import Admin from './views/Admin.vue'
 import Upload from './views/Upload.vue'
+import Search from './views/Search.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,11 @@ export default new VueRouter({
         path: '/',
         name: 'posts',
         component: Posts,
+        },
+        {
+        path: '/search',
+        name: 'search',
+        component: Search,
         },
         {
         path: '/login',
