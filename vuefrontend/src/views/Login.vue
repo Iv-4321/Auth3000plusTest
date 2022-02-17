@@ -15,7 +15,7 @@
           </div>
           <button type="submit" class="btn btn-lg btn-primary btn-block">Sing in</button>
         </form>
-        
+
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
       }
     },
     methods: {
-      login () { 
+      login () {
         this.$store.dispatch('userLogin', {
           username: this.username,
           password: this.password
@@ -51,7 +51,7 @@
 </script>
 
 <style>
-body { 
+body {
   background-color:#f4f4f4;
 }
   .login{

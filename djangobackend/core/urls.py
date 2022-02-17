@@ -8,6 +8,7 @@ router = DefaultRouter()
 router.register(r'books', BookViewSet)
 
 urlpatterns = [
+    path('auth/', include('rest_framework.urls')),
     path('api-token/', TokenObtainPairView.as_view()),
     path('api-token-refresh/', TokenRefreshView.as_view()),
     path("", include(router.urls)),
