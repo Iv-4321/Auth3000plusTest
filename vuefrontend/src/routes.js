@@ -6,6 +6,8 @@ import Logout from './views/Logout'
 import Admin from './views/Admin.vue'
 import Upload from './views/Upload.vue'
 import Search from './views/Search.vue'
+import Registr from './views/Registr.vue'
+import Users from './views/Users.vue'
 
 Vue.use(VueRouter)
 
@@ -42,12 +44,22 @@ export default new VueRouter({
         component: Logout,
         },
         {
+        path: '/registration',
+        name: 'Registr',
+        component: Registr
+        },
+        {
         path: '/upload',
         name: 'upload',
         component: Upload,
         meta: {
             requiresLogin: true
           }
+        },
+                {
+        path: '/users',
+        name: 'Users',
+        component: Users,
         },
     ]
 })

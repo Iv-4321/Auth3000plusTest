@@ -15,7 +15,6 @@
           </div>
           <button type="submit" class="btn btn-lg btn-primary btn-block">Sing in</button>
         </form>
-
       </div>
     </div>
   </div>
