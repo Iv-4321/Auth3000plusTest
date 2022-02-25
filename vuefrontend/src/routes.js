@@ -60,6 +60,9 @@ export default new VueRouter({
         path: '/users',
         name: 'Users',
         component: Users,
+        meta: {
+            requiresLogin: true
+          }
         },
     ]
 })

@@ -22,6 +22,10 @@
             </div>
           </div>
       </div>
+      <v-pagination v-model="currentPage"
+        :length="6"
+        >
+      </v-pagination>
   </div>
 </template>
 
@@ -33,7 +37,10 @@
     name: 'Book',
     data() {
         return {
-        data: []
+        numberOfPages: 1,
+        currentPage: 1,
+        data: [],
+        chosenBook: null,
         };
     },
 
@@ -44,22 +51,45 @@
     },
     computed: mapState(['APIData']),
 
+    created() {
+            this.GetAllBooksOnPage();
 
-    created () {
-        getAPI.get('/api/books/')
+        },
+        watch: {
+        },
+
+
+    //created () {
+
+        //this.onPageChange(this.currentPage); //активирует работу кнопок пагинации на стр
+        //console.log(this.currentPage)
+        //getAPI.get('/api/books/')
+          //.then(response => {
+            //this.$store.state.APIData = response.data
+          //})
+          //.catch(err => {
+           // console.log(err)
+          //})
+    //},
+
+    methods: {
+        GetAllBooksOnPage() {
+                getAPI.get('http://127.0.0.1:8000/api/books/?page='+this.currentPage)
           .then(response => {
             this.$store.state.APIData = response.data
+            console.log(response.data)
+            console.log(this.currentPage)
           })
           .catch(err => {
             console.log(err)
           })
-    },
-    methods: {
+        },
+
         getPdf(file) {
             window.open("" + file, "");
         }
 
-    },
+      },
     }
 
 </script>

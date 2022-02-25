@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 
 from .models import Book
 from .serializers import BookSerializer
+from .service import PaginationMovies
 
 
 class BookViewSet(viewsets.ModelViewSet):
@@ -16,6 +17,7 @@ class BookViewSet(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticatedOrReadOnly]
     # filterset_fields = ['prise']
     search_fields = ['name', 'author']
+    pagination_class = PaginationMovies
 
     def perform_create(self, UploadedFile):
         # parserPdf()
