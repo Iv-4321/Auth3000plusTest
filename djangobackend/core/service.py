@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 
 class PaginationMovies(PageNumberPagination):
-    page_size = 3
+    page_size = 6
     max_page_size = 100
 
 

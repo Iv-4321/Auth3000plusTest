@@ -4,7 +4,7 @@
       <div class="album py-5 bg-light">
           <div class="container">
             <div class="row">
-              <div v-for="book in APIData" :key="book.id" :to="book.pdf" class="col-md-4">
+              <div v-for="book in APIData.results" :key="book.id" :to="book.pdf" class="col-md-4">
                 <div class="card mb-4 box-shadow">
                             <img :src="book.picture" fluid />
                   <div class="card-body">
